@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Smart Farming AI</title>
+    <style>
+        body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ff9a44,#ff4e50);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+        .register-box{
+            background:white;
+            padding:35px;
+            width:400px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#2E8B57;
+            margin-bottom:25px;
+        }
+
+        .input-group{
+            margin-bottom:15px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:5px;
+            font-weight:bold;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:14px;
+        }
+
+        .btn{
+            width:100%;
+            background:#2E8B57;
+            color:white;
+            border:none;
+            padding:12px;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        .btn:hover{
+            background:#256f46;
+        }
+
+        p{
+            text-align:center;
+            margin-top:15px;
+        }
+
+        a{
+            color:#2E8B57;
+            text-decoration:none;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="register-box">
+
+    <h2>🌱 Smart Farming AI</h2>
+
+    <p id="msg" style="color:green;font-weight:bold;text-align:center;"></p>
+
+    <form action="/register" method="POST">
+
+    <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" name="fullname" placeholder="Enter your name" required>
+    </div>
+
+    <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="input-group">
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Create password" required>
+    </div>
+
+    <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" placeholder="Confirm password" required>
+    </div>
+
+    <button type="submit" class="btn">
+        Register
+    </button>
+
+</form>
+
+    <p>
+        Already have an account?
+        <a href="/login">Login</a>
+    </p>
+
+</div>
+<script>
+function showMessage(event){
+    event.preventDefault();
+
+    document.getElementById("msg").innerHTML =
+    "✅ Registration Successful! Redirecting to Login Page...";
+
+    setTimeout(function(){
+        window.location.href="/login";
+    },1500);
+}
+</script>
+
+</body>
+</html>

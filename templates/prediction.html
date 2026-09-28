@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+
+<section class="predict-section">
+    <h1 class="prediction-title">🌾 Smart Crop Prediction System</h1>
+
+<p class="prediction-subtitle">
+Enter soil nutrient and weather values to get the best crop recommendation.
+</p>
+    <div class="prediction-card"></div>
+    <h2>Crop Prediction</h2>
+
+    <form method="POST" action="/prediction">
+        <input type="number" name="Nitrogen" placeholder="Nitrogen" required>
+        <input type="number" name="Phosphorus" placeholder="Phosphorus" required>
+        <input type="number" name="Potassium" placeholder="Potassium" required>
+        <input type="number" step="any" name="Temperature" placeholder="Temperature" required>
+        <input type="number" step="any" name="Humidity" placeholder="Humidity" required>
+        <input type="number" step="any" name="Ph" placeholder="pH Value" required>
+        <input type="number" step="any" name="Rainfall" placeholder="Rainfall" required>
+
+        <button type="submit" onclick="showLoading()">
+    Predict Crop
+</button>
+
+<p id="loading" style="display:none; margin-top:15px; color:green;">
+    ⏳ Predicting Crop...
+</p>
+    </form>
+
+    {% if prediction %}
+<div id="resultModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+              onclick="document.getElementById('resultModal').style.display='none'">
+            &times;
+        </span>
+
+        <h2>🌾 AI Recommended Crop</h2>
+
+        <h1 class="crop-result">{{ prediction }}</h1>
+        
+
+        {% if crop_image %}
+        <img src="{{ url_for('static', filename='crops/' + crop_image) }}"
+             class="crop-image">
+        {% endif %}
+
+    </div>
+
+</div>
+{% endif %}
+</div>
+</section>
+<script>
+
+function showLoading(){
+    document.getElementById("loading").style.display = "block";
+}
+
+</script>
+</body>
+</html>
